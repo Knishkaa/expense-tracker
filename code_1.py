@@ -1,0 +1,126 @@
+##Write a function `greet(name)` that prints `"Hello, <name>!"` using an f-string. Call it with your own name.
+def greet(name): 
+    print(f"Hello , {name}!")
+greet("knishka")
+
+## or
+
+def greet(name):
+    name = "knishka"
+    print(f"Hello , {name}!")
+
+greet("Knishka")
+
+## Write a `while` loop that prints numbers 1 to 5 (inclusive), each on its own line.
+i = 0
+while i<5:
+     i+=1
+     print(i)
+ 
+## OR
+
+##i = 0
+##while i<6:
+##    print(i)
+##    i+=1
+
+##Write a function `is_positive(num)` that returns `True` if `num > 0`, otherwise returns `False`. Test it with a positive and a negative number.
+
+def is_positive(num):
+   if num > 0:
+      return True
+   else:
+        return False
+print(is_positive(5))
+
+## write a func to add 2 numbers using f-string
+def add_and_report(a, b):
+    return a + b
+
+result = add_and_report(3, 5)
+print(f"The sum of 3 and 5 is {result}")
+
+## Write a `while True` loop that keeps asking the user to enter a number, and stops (using `break`) only when they type `0`. Print each number they enter before checking for the stop condition
+while True:
+    num = int(input("enter a number"))
+    print(num)
+    if num ==0:
+        break
+
+## Write a loop from 1 to 10 that prints every number *except* multiples of 3 (use `continue` to skip them)
+i = 0
+while i < 10 :
+    i+=1
+    if i ==3:
+        continue
+    elif i==6:
+        continue
+    elif i==9:
+        continue 
+    print(i)
+
+## Write a function `safe_divide(a, b)` that returns the division result, but returns `"Cannot divide by zero"` if `b` is 0.
+def div(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Cannot divide by 0"
+
+result = div(10, 100)
+print(result)   # this correctly prints "Cannot divide by 0"
+
+##Write a function `add_expense(expenses, amount, category)` that takes a list called `expenses`, adds a new dictionary like `{"amount": amount, "category": category}` to it, and returns the updated list. Call it a few times and print the final list.
+def add_expense(expenses , amount , category):
+    expense_dict = {"amount": amount, "category": category}
+    expenses.append(expense_dict)
+    return expenses
+my_expenses = []
+add_expense(my_expenses ,100, "food")
+print(my_expenses)
+
+## Write a `while True` menu loop with two options: "1. Add number to a list" and "2. Quit". Keep looping, adding whatever number the user types to a list, until they type `2`. When they quit, print the full list.
+numbers = []
+
+while True:
+    num = int(input("enter a number: "))
+    if num == 2:
+        break
+    else:
+        numbers.append(num)
+
+print(numbers)
+
+## Combine Q8 and Q9: build a small loop where the user can repeatedly enter an amount and category, each one gets added to an `expenses` list as a dictionary, and typing `"quit"` instead of an amount stops the loop and prints all the expenses collected so far.
+# 1. Q8 Function: Defines how to add expenses to my list
+def add_expense(expenses, amount, category):
+    expenses.append({"amount": amount, "category": category})
+    return expenses
+
+# 2. Setting up main data storage
+my_expenses = []
+
+# 3. Q9 Loop: Continuous user menu
+while True:
+    print("\n--- EXPENSE TRACKER ---")
+    print("1. Add Expense")
+    print("2. View All Expenses")
+    print("3. Quit")
+    
+    choice = input("Choose an option (1-3): ")
+    
+    if choice == "3":
+        print("Goodbye!")
+        break  # Exits loop directly without needing an else block
+        
+    if choice == "1":
+        # Convert input string to int for proper numerical data storage
+        amt = int(input("Enter amount spent: "))
+        cat = input("Enter category (e.g., food, transport): ")
+        
+        # Calling Q8 function to modify list
+        add_expense(my_expenses, amt, cat)
+        print("Expense added successfully!")
+        
+    elif choice == "2":
+        print("\nYour current expenses:")
+        print(my_expenses)
